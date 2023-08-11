@@ -1,0 +1,10 @@
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\bin\Debug\MathQuiz.exe.config
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\bin\Debug\MathQuiz.exe
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\bin\Debug\MathQuiz.pdb
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.csproj.AssemblyReference.cache
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.Form1.resources
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.Properties.Resources.resources
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.csproj.GenerateResource.cache
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.csproj.CoreCompileInputs.cache
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.exe
+C:\Users\erikn\OneDrive\Área de Trabalho\C#\Visual_Studio\MathQuiz\obj\Debug\MathQuiz.pdb
