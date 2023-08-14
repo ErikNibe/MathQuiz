@@ -24,6 +24,8 @@ namespace MathQuiz
         int multiplicand, multiplier;
         int dividend, divisor;
 
+        int timeLeft;
+
         public void StartTheQuiz()
         {   
             // Fill in the addition problem
@@ -59,6 +61,64 @@ namespace MathQuiz
             dividedLeftLabel.Text = dividend.ToString();
             dividedRightLabel.Text = divisor.ToString();
             quotient.Value = 0;
+
+            // Start the timer
+            timeLeft = 30;
+            timeLabel.Text = timeLeft.ToString() + " seconds";
+            timer1.Start();
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            StartTheQuiz();
+            startBtn.Enabled = false;
+        }
+
+        private bool CheckTheAnswer()
+        {
+            // Verify if the answers are correct
+            if ((addend1 + addend2 == sum.Value) 
+                && (minuend - subtrahend == difference.Value)
+                && (multiplicand * multiplier == product.Value)
+                && (dividend / divisor == quotient.Value))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (CheckTheAnswer()) 
+            { 
+                // If CheckTheAnswer() return true, then the user got all the answer right
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!",
+                                "Congratulations!");
+                startBtn.Enabled = true;
+            }
+            else if (timeLeft > 0)
+            {
+                // If CheckTheAnswer returns false and there's still time, keep counting down.
+                timeLeft = timeLeft - 1;
+                timeLabel.Text = timeLeft + " seconds";
+            }
+            else 
+            {
+                // If the user ran out of time, stop the timer and show a MessageBox, and fill the answers
+                timer1.Stop();
+                timeLabel.Text = "Time's up!";
+                MessageBox.Show("You didn't finish in time.", "Sorry!");
+
+                sum.Value = addend1 + addend2;
+                difference.Value = minuend - subtrahend;
+                product.Value = multiplicand * multiplier;
+                quotient.Value = dividend / divisor;
+
+                startBtn.Enabled = true;
+            }
         }
     }
 }
