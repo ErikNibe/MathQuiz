@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,13 +28,42 @@ namespace MathQuiz
         int timeLeft;
 
         private void answer_Enter(object sender, EventArgs e)
-        {
+        {   
+            // The 'sender' parameter refers to the object whose event is firing
+            
+            // Casts or converts thse 'sender' from a generic object to a NumericUpDown control  
             NumericUpDown answerBox = sender as NumericUpDown;
 
+            // Verifies wheter answerBox was successfuly cast as a NumericUpDown control
             if (answerBox != null)
-            {
+            {   
+                // Determines the lenght of the answer that's currently in the numericUpDown
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
+                // Uses the answer lenght to select the current value in control
                 answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
+        private void hintSound_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+
+            if (numericUpDown != null)
+            {
+                int value = (int)numericUpDown.Value;
+
+                int resultSum = addend1 + addend2;
+                int resultDifference = minuend - subtrahend;
+                int resultProduct = multiplicand * multiplier;
+                int resultQuotient = dividend / divisor;
+
+                if (value == resultSum || 
+                    value == resultDifference ||
+                    value == resultProduct ||
+                    value == resultQuotient)
+                {
+                    SystemSounds.Beep.Play();
+                }
             }
         }
 
@@ -115,6 +145,12 @@ namespace MathQuiz
                 // If CheckTheAnswer returns false and there's still time, keep counting down.
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
+
+                // Changes the color of the time label
+                if (timeLeft == 5)
+                {
+                    timeLabel.BackColor = Color.Red;
+                }
             }
             else 
             {
@@ -128,6 +164,7 @@ namespace MathQuiz
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
 
+                timeLabel.BackColor = SystemColors.Control;
                 startBtn.Enabled = true;
             }
         }
